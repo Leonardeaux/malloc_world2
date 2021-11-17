@@ -132,6 +132,20 @@ int getWeapon(Player* player1);
 
 int getArmure(Player* player1);
 
+void initialize(Player *player);
+
+int canGetWeapon(Player *player);
+
+int canGetArmor(Player *player);
+
+int nbItemLibre(Player *player);
+
+int getArme(Player * player, int weapon);
+
+int canCreateEpeeBois(Player *player);
+
+void createEpeeBois(Player *player);
+
 //int nbItem(int *index, int* inventory);
 
 #endif

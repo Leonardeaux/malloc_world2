@@ -12,6 +12,7 @@ int main(int argc, const char **argv) {
     printf("\n");
 
     Player* APlayer = create_player(map, SIDE, "Enzo");
+    initialize(APlayer);// je met toutes les cases à 0
 
     printf("\n%d %d\n", APlayer->coord_x, APlayer->coord_y);
     printf("\n%d\n", map[0][APlayer->coord_x][APlayer->coord_y]);
