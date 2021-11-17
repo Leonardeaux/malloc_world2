@@ -71,8 +71,7 @@ int teleport_player(int*** map, int side, Player* player, int portal_x, int port
     }
 }
 
-int isWeapon(Item item){// je recupère l'index après chaque tap dans les déplacements, et je regarde il est contenu dans ma liste pour déterminer s'il
-    // s'agit d'une arme
+int isWeapon(Item item){
     /*int listWeapon[] = {WOODEN_SWORD, STONE_SWORD, STONE_SPEAR, STONE_HAMMER, IRON_SWORD,
                         IRON_SPEAR, IRON_HAMMER, DIAMOND_SWORD, DIAMOND_SPEAR, DIAMOND_HAMMER};
     */
@@ -102,8 +101,7 @@ int getWeapon(Player* player1){
     }
 }
 
-int isArmor(Item item){//je recupère l'index après chaque tap dans les déplacements, et je regarde il est contenu dans ma liste pour déterminer s'il
-    // s'agit d'une armure
+int isArmor(Item item){
     /*int listeArmor[] = {STONE_BREASTPLATE, IRON_BREASTPLATE, DIAMOND_BREASTPLATE};*/
     for(int i=0; i<3; i++){
         if(item.type == 5){
@@ -113,8 +111,7 @@ int isArmor(Item item){//je recupère l'index après chaque tap dans les déplac
     return 0;
 }
 
-int isTools(Item item){//je recupère l'index après chaque tap dans les déplacements, et je regarde il est contenu dans ma liste pour déterminer s'il
-    // s'agit d'un outil
+int isTools(Item item){
     for(int i=0; i<10; i++){
         if(item.type == 2){
             return 1;
@@ -123,8 +120,7 @@ int isTools(Item item){//je recupère l'index après chaque tap dans les déplac
     return 0;
 }
 
-int isRessource(Item item){//je recupère l'index après chaque tap dans les déplacements, et je regarde il est contenu dans ma liste pour déterminer s'il
-    // s'agit d'une ressource
+int isRessource(Item item){
     for(int i=0; i<10; i++){
         if(item.type == 3){
             return 1;
@@ -133,8 +129,7 @@ int isRessource(Item item){//je recupère l'index après chaque tap dans les dé
     return 0;
 }
 
-int isPotion(Item item){//je recupère l'index après chaque tap dans les déplacements, et je regarde il est contenu dans ma liste pour déterminer s'il
-    // s'agit d'une potion
+int isPotion(Item item){
     int listePotion[] = {POTION_OF_LIFE_I, POTION_OF_LIFE_II, POTION_OF_LIFE_III};
     for(int i=0; i<3; i++){
         if(item.type == 4){
@@ -143,22 +138,6 @@ int isPotion(Item item){//je recupère l'index après chaque tap dans les dépla
     }
     return 0;
 }
-// j'effectue la recherche uniquement pour les armes et les armures car elles sont limités
-// je recupère mon inventaire via le pointeur liste et je regarde si j'en est bien moins de 3 à chaque tape, dans le main, une condition
-// à effectuer dans le cas où on aurait 4 armes ( un printf pour lui dire qu'on a déjà trop d'armes ? )
-/*int getArmure(Player* player1){
-    int item = 0;
-    for(int i=0;i < LENGTH;i++){
-        item = isArmor(player1->inventory[i]);
-        //printf(" j ai ca : %d\n", item);
-        if(item == 1){
-            return 1;
-        }
-    }
-    return 0;
-}*/
-
-// même chose pour un armure ( max 1)
 
 /*int nbItem(Item item, int* inventory){// l'inventaire
     int counter = 0;
