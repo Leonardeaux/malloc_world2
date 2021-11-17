@@ -107,7 +107,7 @@ typedef struct Player{
     int level;
     int hp;
     int hp_max;
-    Item inventory[10];
+    Item inventory[10];// int inventory[10]
 } Player;
 
 Player* create_player(int*** map, int side, char* username);
@@ -118,20 +118,20 @@ int MyGetch();
 
 void Locate(int x,int y);
 
-int isWeapon(int Nextcase);
+int isWeapon(Item item);
 
-int isArmor(int Nextcase);
+int isArmor(Item item);
 
-int isTools(int Nextcase);
+int isTools(Item item);
 
-int isRessource(int Nextcase);
+int isRessource(Item item);
 
-int isPotion(int Nextcase);
+int isPotion(Item item);
 
 int getWeapon(Player* player1);
 
 int getArmure(Player* player1);
 
-int nbItem(int Nextcase, int* inventory);
+//int nbItem(int *index, int* inventory);
 
 #endif
