@@ -119,10 +119,10 @@ void spawn_player(Player* player, int** map, int side);
 
 int teleport_player(int*** map, int side, Player* player, int portal_x, int portal_y);
 
-Item* create_weapon(int id, char* name, int damage, float max_durability, float actual_durability);
+void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);
 
-Item* create_tool(int id, char* name, float max_durability, float actual_durability);
+void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability);
 
-Item* create_resource(int id, char* name, int quantity);
+void create_resource(int index, Player *player, int id, char* name, int quantity);
 
 #endif

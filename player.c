@@ -15,10 +15,12 @@ Player* create_player(int*** map, int side, char* username){
     APlayer->hp = 100;
     APlayer->actual_map = 0;
     strcpy(APlayer->username, username);
-    APlayer->inventory[0] = *create_weapon(WOODEN_SWORD, "Wooden_sword", 10, 100, 100);
-    APlayer->inventory[1] = *create_tool(WOODEN_AXE, "Wooden_axe", 100, 100);
-    APlayer->inventory[2] = *create_tool(WOODEN_BILLHOOK, "Wooden_billhook", 100, 100);
-    APlayer->inventory[3] = *create_tool(WOODEN_PICKAXE, "Wooden_pickaxe", 100, 100);
+    create_weapon(0, APlayer, WOODEN_SWORD, "Wooden_sword", 10, 100, 100);
+    create_tool(1, APlayer, WOODEN_AXE, "Wooden_axe", 100, 100);
+    create_tool(2, APlayer, WOODEN_BILLHOOK, "Wooden_billhook", 100, 100);
+    create_tool(3, APlayer, WOODEN_PICKAXE, "Wooden_pickaxe", 100, 100);
+//    APlayer->inventory[2] = *create_tool(WOODEN_BILLHOOK, "Wooden_billhook", 100, 100);
+//    APlayer->inventory[3] = *create_tool(WOODEN_PICKAXE, "Wooden_pickaxe", 100, 100);
 
     spawn_player(APlayer, map[0], side);
 
@@ -66,44 +68,32 @@ int teleport_player(int*** map, int side, Player* player, int portal_x, int port
     }
 }
 
-Item* create_weapon(int id, char* name, int damage, float max_durability, float actual_durability){
-    Item* AItem = malloc(sizeof(Item));
-    Weapon* AWeapon = malloc(sizeof(Weapon));
+void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability){
+    player->inventory[index].type = WEAPON;
+    Weapon* AWeapon = &player->inventory[index].weapon;
+
     AWeapon->id = id;
     AWeapon->damage = damage;
     AWeapon->max_durability = max_durability;
     AWeapon->actual_durability = actual_durability;
     strcpy(AWeapon->name, name);
-
-    AItem->type = WEAPON;
-    AItem->weapon = *AWeapon;
-
-    return AItem;
 }
 
-Item* create_tool(int id, char* name, float max_durability, float actual_durability){
-    Item* AItem = malloc(sizeof(Item));
-    Tool* ATool = malloc(sizeof(Tool));
+void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability){
+    player->inventory[index].type = TOOL;
+    Tool* ATool = &player->inventory[index].tool;
+
     ATool->id = id;
     ATool->max_durability = max_durability;
     ATool->actual_durability = actual_durability;
     strcpy(ATool->name, name);
-
-    AItem->type = TOOL;
-    AItem->tool = *ATool;
-
-    return AItem;
 }
 
-Item* create_resource(int id, char* name, int quantity){
-    Item* AItem = malloc(sizeof(Item));
-    Resource* AResource = malloc(sizeof(Resource));
+void create_resource(int index, Player *player, int id, char* name, int quantity){
+    player->inventory[index].type = RESOURCE;
+    Resource * AResource = &player->inventory[index].resource;
+
     AResource->id = id;
     AResource->quantity = quantity;
     strcpy(AResource->name, name);
-
-    AItem->type = RESOURCE;
-    AItem->resource = *AResource;
-
-    return AItem;
 }
