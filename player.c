@@ -104,25 +104,27 @@ int canGetArmor(Player *player){// est ce que je peux prendre une armure ou pas
 
 int nbItemLibre(Player *player){// pour savoir toutes les places disponibles
     int nbitem =0;
-    for(int i=0; i<10; i++){
+    for(int i = 1; i<=10; i++){
         if(player->inventory[i].type==0)
             nbitem++;
     }
     return nbitem;
 }
 
-int getArme(Player * player, int weapon){// créer une arme
-    for(int i = 0; i < 10; i++){
+void makeWeapon(Player * player, int weapon){
+    for(int i = 1; i <= 10; i++){
         if(player->inventory[i].type == 0){
             player->inventory[i].type = 1;
-            player->inventory[i].type = weapon;
-            return 1;
+            player->inventory[i].weapon.id = weapon;
+            player->inventory[i].weapon.damage = 1;
+            player->inventory[i].weapon.max_durability = 10;
+            player->inventory[i].weapon.actual_durability = 10;
+            break;
         }
     }
-    return 0;
 }
 
-int canCreateEpeeBois(Player *player){// pour une épée en bois, 3 sapin condition
+int canCreateWOODENSWORD(Player *player){
     for(int i=0; i<10; i++){
         if(player->inventory[i].type==3){
             if(player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity>=3)
@@ -133,7 +135,7 @@ int canCreateEpeeBois(Player *player){// pour une épée en bois, 3 sapin condit
 }
 
 
-void createEpeeBois(Player *player){ // créer pour une épée en bois
+void createWOODENSWORD(Player *player){
     for(int i=0; i<10; i++){
         if(player->inventory[i].type==3){
             if(player->inventory[i].resource.id == FIR)
@@ -142,5 +144,5 @@ void createEpeeBois(Player *player){ // créer pour une épée en bois
         }
     }
 
-    getArme(player, WOODEN_SWORD);// renvoi pour créer une arme
+    makeWeapon(player, WOODEN_SWORD);
 }

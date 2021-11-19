@@ -114,24 +114,6 @@ Player* create_player(int*** map, int side, char* username);
 
 void spawn_player(Player* player, int** map, int side);
 
-int MyGetch();
-
-void Locate(int x,int y);
-
-int isWeapon(Item item);
-
-int isArmor(Item item);
-
-int isTools(Item item);
-
-int isRessource(Item item);
-
-int isPotion(Item item);
-
-int getWeapon(Player* player1);
-
-int getArmure(Player* player1);
-
 void initialize(Player *player);
 
 int canGetWeapon(Player *player);
@@ -140,11 +122,11 @@ int canGetArmor(Player *player);
 
 int nbItemLibre(Player *player);
 
-int getArme(Player * player, int weapon);
+void makeWeapon(Player * player, int weapon);
 
-int canCreateEpeeBois(Player *player);
+int canCreateWOODENSWORD(Player *player);
 
-void createEpeeBois(Player *player);
+void createWOODENSWORD(Player *player);
 
 //int nbItem(int *index, int* inventory);
 
