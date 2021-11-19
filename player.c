@@ -71,75 +71,6 @@ int teleport_player(int*** map, int side, Player* player, int portal_x, int port
     }
 }
 
-/*int isWeapon(Item item){
-    /*int listWeapon[] = {WOODEN_SWORD, STONE_SWORD, STONE_SPEAR, STONE_HAMMER, IRON_SWORD,
-                        IRON_SPEAR, IRON_HAMMER, DIAMOND_SWORD, DIAMOND_SPEAR, DIAMOND_HAMMER};
-
-    for(int i=0; i<10; i++){
-        if(item.type == 1){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int getWeapon(Player* player1){
-    int nbWeapon =0;
-    int itemWeapon = 0;
-    for(int i=0;i < 10; i++){
-        itemWeapon = isWeapon(player1->inventory[i]);
-        printf(" j ai ca : %d\n", itemWeapon);
-        if(itemWeapon==1)
-            nbWeapon++;
-    }
-    if(nbWeapon == 3){
-        return 1;
-    }else if(nbWeapon < 3){
-        return 2;
-    }else{
-        return 0;
-    }
-}
-
-int isArmor(Item item){
-    /*int listeArmor[] = {STONE_BREASTPLATE, IRON_BREASTPLATE, DIAMOND_BREASTPLATE};
-    for(int i=0; i<3; i++){
-        if(item.type == 5){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int isTools(Item item){
-    for(int i=0; i<10; i++){
-        if(item.type == 2){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int isRessource(Item item){
-    for(int i=0; i<10; i++){
-        if(item.type == 3){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int isPotion(Item item){
-    int listePotion[] = {POTION_OF_LIFE_I, POTION_OF_LIFE_II, POTION_OF_LIFE_III};
-    for(int i=0; i<3; i++){
-        if(item.type == 4){
-            return 1;
-        }
-    }
-    return 0;
-}
-*/
-
 void initialize(Player *player){// le mettre une fois le joueur crée
     for(int i=0; i<10; i++){
         player->inventory[i].type=0;
@@ -213,13 +144,3 @@ void createEpeeBois(Player *player){ // créer pour une épée en bois
 
     getArme(player, WOODEN_SWORD);// renvoi pour créer une arme
 }
-
-/*int nbItem(Item item, int* inventory){// l'inventaire
-    int counter = 0;
-    for(int i=0; i < LENGTH;i++){
-        if(item == Nextcase){
-            counter++;
-        }
-    }
-    return counter;
-}*/
