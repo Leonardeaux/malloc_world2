@@ -18,15 +18,18 @@ typedef struct Tool{
 
 typedef struct Resource{
     int id;
+    char name[255];
     int quantity;
 } Resource;
 
 typedef struct Consumable{
     int id;
+    char name[255];
 } Consumable;
 
 typedef struct Armor{
     int id;
+    char name[255];
 } Armor;
 
 typedef struct Item{
@@ -114,24 +117,12 @@ Player* create_player(int*** map, int side, char* username);
 
 void spawn_player(Player* player, int** map, int side);
 
-int MyGetch();
+int teleport_player(int*** map, int side, Player* player, int portal_x, int portal_y);
 
-void Locate(int x,int y);
+Item* create_weapon(int id, char* name, int damage, float max_durability, float actual_durability);
 
-int isWeapon(int Nextcase);
+Item* create_tool(int id, char* name, float max_durability, float actual_durability);
 
-int isArmor(int Nextcase);
-
-int isTools(int Nextcase);
-
-int isRessource(int Nextcase);
-
-int isPotion(int Nextcase);
-
-int getWeapon(Player* player1);
-
-int getArmure(Player* player1);
-
-int nbItem(int Nextcase, int* inventory);
+Item* create_resource(int id, char* name, int quantity);
 
 #endif
