@@ -23,10 +23,8 @@ int main(int argc, const char **argv) {
         printf("et cette quantite de ressource: %d\n", APlayer->inventory[i].resource.quantity);
     }
 
-    int res = canCreateWOODENSWORD(APlayer);
-    if(res == 1){
-        createWOODENSWORD(APlayer);
-    }
+    canCreateWOODENSWORD(1, APlayer);
+
     printf("\n et apres creation de l arme: contenu: \n");
 
     for(int i = 1; i <= 10; i++) {
