@@ -1,6 +1,8 @@
 #ifndef MAC_WINDOWS_TEST_MAP_H
 #define MAC_WINDOWS_TEST_MAP_H
 
+#include "player.h"
+
 #define MIN_PLANT 3
 #define MIN_ROCK 3
 #define MIN_WOOD 3
@@ -32,6 +34,21 @@ typedef enum entity_type {
     PORTAL_TYPE = 4
 } entity_type;
 
+static int entity_bitmap[] = {
+    0,
+    0,
+    0,
+    GRASS,
+    ROCK,
+    FIR,
+    LAVENDER,
+    IRON,
+    BEECH,
+    HEMP,
+    DIAMOND,
+    OAK
+};
+
 int*** create_maps(int side);
 
 int*** malloc_map(int side);
@@ -43,6 +60,8 @@ int verif_map(int*** map, int side);
 void square_access(int** map, int side, int x, int y);
 
 void print_map(int*** map, int side);
+
+void print_one_map(int** map, int side);
 
 void free_map(int*** map, int side);
 

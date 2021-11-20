@@ -230,6 +230,21 @@ void print_map(int*** map, int side){
     }
 }
 
+void print_one_map(int** map, int side){
+
+    for(int j = 0; j < side; j++){
+        printf("|");
+        for(int i = 0; i < side; i++){
+            if(map[i][j] < 0 || map[i][j] > 9){
+                printf("%d |", map[i][j]);
+            } else {
+                printf(" %d |", map[i][j]);
+            }
+        }
+        printf("\n");
+    }
+}
+
 /***
  * Libère la mémoire de la map
  * @param map map passé en paramêtre
@@ -296,6 +311,6 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
     return 0;
 }
 
-int collect_resource(){
+int collect_resource(int id_entity, Player *player, ){
 
 }

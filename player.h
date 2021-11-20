@@ -29,6 +29,9 @@ typedef struct Consumable{
 
 typedef struct Armor{
     int id;
+    float damage_reduction;
+    float max_durability;
+    float actual_durability;
     char name[255];
 } Armor;
 
@@ -117,6 +120,14 @@ Player* create_player(int*** map, int side, char* username);
 
 void spawn_player(Player* player, int** map, int side);
 
+void initialize_player(Player *player);
+
+int nb_free_space(Player *player);
+
+int locale_resource(int id_resource, Player *player);
+
+int can_recolt_resource(int id_entity, int quantity, Player *player);
+
 int teleport_player(int*** map, int side, Player* player, int portal_x, int portal_y);
 
 void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);
@@ -124,5 +135,7 @@ void create_weapon(int index, Player *player, int id, char* name, int damage, fl
 void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability);
 
 void create_resource(int index, Player *player, int id, char* name, int quantity);
+
+void create_armor(int index, Player *player, int id, char* name, float damage_reduction, float max_durability, float actual_durability);
 
 #endif
