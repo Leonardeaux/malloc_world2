@@ -139,43 +139,41 @@ int canCreateWOODENSWORD(int id, Player *player){
     float max_durability, actual_durability;
     char *name;
     for(i = 1; i<=10; i++) {
-        if (player->inventory[i].type == 3) {
-            switch (id) {
-                case 1:
-                    if (player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
-                        player->inventory[i].resource.quantity -= 3;
-                        name = "WOODEN_SWORD";
-                        damage = 1, max_durability = 10, actual_durability = 10;
-                    }
-                    break;
-                case 8:
-                    if (player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
-                        for(j = 1; j < 10; j++){
-                            if(player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
-                                player->inventory[i].resource.quantity -= 2;
-                                player->inventory[j].resource.quantity -= 3;
-                                name = "STONE_SWORD";
-                                damage = 2, max_durability = 10, actual_durability = 10;
-                            }
+        switch (id) {
+            case 1:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
+                    player->inventory[i].resource.quantity -= 3;
+                    name = "WOODEN_SWORD";
+                    damage = 1, max_durability = 10, actual_durability = 10;
+                }
+                break;
+            case 8:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
+                    for(j = 1; j < 10; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 3;
+                            name = "STONE_SWORD";
+                            damage = 2, max_durability = 10, actual_durability = 10;
                         }
                     }
-                    break;
-                case 19:
-                    if (player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
-                        for(j = 1; j <= 10; j++){
-                            if(player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 7){
-                                player->inventory[i].resource.quantity -= 2;
-                                player->inventory[j].resource.quantity -= 7;
-                                name = "IRON_SWORD";
-                                damage = 5, max_durability = 10, actual_durability = 10;
-                            }
+                }
+                break;
+            case 19:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
+                    for(j = 1; j <= 10; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 7){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 7;
+                            name = "IRON_SWORD";
+                            damage = 5, max_durability = 10, actual_durability = 10;
                         }
                     }
-                    break;
-                default:
-                    printf("mauvaise id");
-                    break;
-            }
+                }
+                break;
+            default:
+                printf("mauvaise id");
+                break;
         }
     }
     create_weapon(i, player, id, name, damage, max_durability, actual_durability);
