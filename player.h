@@ -122,8 +122,6 @@ int canGetArmor(Player *player);
 
 int nbItemLibre(Player *player);
 
-void makeWeapon(Player * player, int weapon);
-
 int canCreateWOODENSWORD(int id, Player *player);
 
 void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);

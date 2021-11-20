@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h
+
 C:/Users/jeffr/Documents/GitHub/malloc_world2/main.c
 stdio.h
 -
@@ -15,14 +17,48 @@ map.h
 C:/Users/jeffr/Documents/GitHub/malloc_world2/map.h
 player.h
 C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+craft.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h
 shift.h
 C:/Users/jeffr/Documents/GitHub/malloc_world2/shift.h
 
 C:/Users/jeffr/Documents/GitHub/malloc_world2/map.h
 
+C:/Users/jeffr/Documents/GitHub/malloc_world2/player.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+map.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/map.h
+player.h
 C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+craft.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h
+utils.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/utils.h
+
+C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+
+C:/Users/jeffr/Documents/GitHub/malloc_world2/shift.c
+stdio.h
+-
+stdlib.h
+-
+map.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/map.h
+shift.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/shift.h
+player.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+utils.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/utils.h
 
 C:/Users/jeffr/Documents/GitHub/malloc_world2/shift.h
 player.h
 C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+
+C:/Users/jeffr/Documents/GitHub/malloc_world2/utils.h
 

@@ -3,6 +3,7 @@
 #include <string.h>
 #include "map.h"
 #include "player.h"
+#include "craft.h"
 #include "utils.h"
 
 #define MAX 3
@@ -72,14 +73,14 @@ int teleport_player(int*** map, int side, Player* player, int portal_x, int port
 }
 
 void initialize(Player *player){// le mettre une fois le joueur crée
-    for(int i=0; i<10; i++){
+    for(int i=0; i<9; i++){
         player->inventory[i].type=0;
     }
 }
 
 int canGetWeapon(Player *player){// est ce que je peux prendre une arme ou pas, savoir combien j'ai d'arme
     int nbweapon=0;
-    for(int i=0; i< 10; i++){
+    for(int i=0; i< 9; i++){
         if(player->inventory[i].type == 1)
             nbweapon++;
     }
@@ -91,7 +92,7 @@ int canGetWeapon(Player *player){// est ce que je peux prendre une arme ou pas, 
 
 int canGetArmor(Player *player){// est ce que je peux prendre une armure ou pas
     int nbArmor=0;
-    for(int i=0; i< 10; i++){
+    for(int i=0; i< 9; i++){
         if(player->inventory[i].type == 5)
             nbArmor++;
     }
@@ -104,24 +105,11 @@ int canGetArmor(Player *player){// est ce que je peux prendre une armure ou pas
 
 int nbItemLibre(Player *player){// pour savoir toutes les places disponibles
     int nbitem =0;
-    for(int i = 1; i<=10; i++){
+    for(int i = 0; i<9; i++){
         if(player->inventory[i].type==0)
             nbitem++;
     }
     return nbitem;
-}
-
-void makeWeapon(Player * player, int weapon){
-    for(int i = 1; i <= 10; i++){
-        if(player->inventory[i].type == 0){
-            player->inventory[i].type = 1;
-            player->inventory[i].weapon.id = weapon;
-            player->inventory[i].weapon.damage = 1;
-            player->inventory[i].weapon.max_durability = 10;
-            player->inventory[i].weapon.actual_durability = 10;
-            break;
-        }
-    }
 }
 
 void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability){
@@ -138,7 +126,7 @@ int canCreateWOODENSWORD(int id, Player *player){
     int i, j, damage;
     float max_durability, actual_durability;
     char *name;
-    for(i = 1; i<=10; i++) {
+    for(i = 0; i < 10; i++) {
         switch (id) {
             case 1:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
@@ -149,7 +137,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 8:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
-                    for(j = 1; j < 10; j++){
+                    for(j = 0; j < 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
@@ -161,12 +149,60 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 19:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
-                    for(j = 1; j <= 10; j++){
-                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 7){
+                    for(j = 0; j < 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 4){
                             player->inventory[i].resource.quantity -= 2;
-                            player->inventory[j].resource.quantity -= 7;
+                            player->inventory[j].resource.quantity -= 4;
                             name = "IRON_SWORD";
                             damage = 5, max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 30:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == OAK && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j < 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == DIAMOND && player->inventory[j].resource.quantity >= 5){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 5;
+                            name = "DIAMOND_SWORD";
+                            damage = 10, max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 9:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3){
+                    for(j = 0; j < 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 4){
+                            player->inventory[i].resource.quantity -= 3;
+                            player->inventory[j].resource.quantity -= 4;
+                            name = "STONE_SPEAR";
+                            damage = 3, max_durability = 8, actual_durability = 8;
+                        }
+                    }
+                }
+                break;
+            case 20:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 3){
+                    for(j = 0; j < 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 5){
+                            player->inventory[i].resource.quantity -= 3;
+                            player->inventory[j].resource.quantity -= 5;
+                            name = "STONE_SPEAR";
+                            damage = 7, max_durability = 8, actual_durability = 8;
+                        }
+                    }
+                }
+                break;
+            case 31:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == OAK && player->inventory[i].resource.quantity >= 3){
+                    for(j = 0; j < 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == DIAMOND && player->inventory[j].resource.quantity >= 6){
+                            player->inventory[i].resource.quantity -= 3;
+                            player->inventory[j].resource.quantity -= 6;
+                            name = "STONE_SPEAR";
+                            damage = 15, max_durability = 8, actual_durability = 8;
                         }
                     }
                 }

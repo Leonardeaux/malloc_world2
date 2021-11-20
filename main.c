@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "map.h"
 #include "player.h"
+#include "craft.h"
 #include "shift.h"
 
 #define SIDE 10
@@ -29,17 +30,17 @@ int main(int argc, const char **argv) {
     APlayer->inventory[8].resource.id = IRON;
     APlayer->inventory[8].resource.quantity = 15;
 
-    for(int i = 1; i <= 10; i++){
+    for(int i = 0; i < 10; i++){
         printf("j'ai ce type : %d ", APlayer->inventory[i].type);
         printf("et cette ressource : %d ", APlayer->inventory[i].resource.id);
         printf("et cette quantite de ressource: %d\n", APlayer->inventory[i].resource.quantity);
     }
 
-    canCreateWOODENSWORD(19, APlayer);
+    canCreateWOODENSWORD(1, APlayer);
 
     printf("\n et apres creation de l arme: contenu: \n");
 
-    for(int i = 1; i <= 10; i++) {
+    for(int i = 0; i < 10; i++){
         printf("j'ai ce type : %d ", APlayer->inventory[i].type);
         printf("et cette ressource : %d ", APlayer->inventory[i].resource.id);
         printf("et cette quantite de ressource: %d\n", APlayer->inventory[i].resource.quantity);
