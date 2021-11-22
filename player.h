@@ -53,18 +53,6 @@ typedef enum weapon {
     DIAMOND_HAMMER = 32,   //Marteau en diamant
 } weapon;
 
-typedef enum tool {
-    WOODEN_PICKAXE = 2, //Pioche en bois
-    WOODEN_BILLHOOK = 3,//Serpe en bois
-    WOODEN_AXE = 4,     //Hache en bois
-    STONE_PICKAXE = 12, //Pioche en pierre
-    STONE_BILLHOOK = 13,//Serpe en pierre
-    STONE_AXE = 14,     //Hache en pierre
-    IRON_PICKAXE = 23,  //Pioche en fer
-    IRON_BILLHOOK = 24, //Serpe en fer
-    IRON_AXE = 25,      //Hache en fer
-} tool;
-
 typedef enum resource {
     FIR = 5,        //Sapin
     ROCK = 6,       //Pierre
@@ -76,6 +64,18 @@ typedef enum resource {
     DIAMOND = 28,   //Diamant
     HEMP = 29,      //Chanvre
 } resource;
+
+typedef enum tool {
+    WOODEN_PICKAXE = 2, //Pioche en bois
+    WOODEN_BILLHOOK = 3,//Serpe en bois
+    WOODEN_AXE = 4,     //Hache en bois
+    STONE_PICKAXE = 12, //Pioche en pierre
+    STONE_BILLHOOK = 13,//Serpe en pierre
+    STONE_AXE = 14,     //Hache en pierre
+    IRON_PICKAXE = 23,  //Pioche en fer
+    IRON_BILLHOOK = 24, //Serpe en fer
+    IRON_AXE = 25,      //Hache en fer
+} tool;
 
 typedef enum armor {
     STONE_BREASTPLATE = 11,     //Plastron en pierre
@@ -125,6 +125,14 @@ int nbItemLibre(Player *player);
 int canCreateWOODENSWORD(int id, Player *player);
 
 void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);
+
+void create_armor(int index, Player *player, int id);
+
+int canCreateARMOR(int id, Player *player);
+
+void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability);
+
+int canCreateTOOL(int id, Player *player);
 
 //int nbItem(int *index, int* inventory);
 

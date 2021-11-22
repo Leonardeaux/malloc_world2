@@ -137,7 +137,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 8:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
@@ -149,7 +149,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 19:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 4){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 4;
@@ -161,7 +161,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 30:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == OAK && player->inventory[i].resource.quantity >= 2){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == DIAMOND && player->inventory[j].resource.quantity >= 5){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 5;
@@ -173,7 +173,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 9:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 4){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 4;
@@ -185,11 +185,11 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 20:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 3){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 5){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 5;
-                            name = "STONE_SPEAR";
+                            name = "IRON_SPEAR";
                             damage = 7, max_durability = 8, actual_durability = 8;
                         }
                     }
@@ -197,12 +197,48 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
             case 31:
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == OAK && player->inventory[i].resource.quantity >= 3){
-                    for(j = 0; j < 9; j++){
+                    for(j = 0; j <= 9; j++){
                         if(player->inventory[j].type == 3 && player->inventory[j].resource.id == DIAMOND && player->inventory[j].resource.quantity >= 6){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 6;
-                            name = "STONE_SPEAR";
+                            name = "DIAMOND_SPEAR";
                             damage = 15, max_durability = 8, actual_durability = 8;
+                        }
+                    }
+                }
+                break;
+            case 10:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 6){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 6;
+                            name = "STONE_HAMMER";
+                            damage = 4, max_durability = 5, actual_durability = 5;
+                        }
+                    }
+                }
+                break;
+            case 21:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 7){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 7;
+                            name = "IRON_HAMMER";
+                            damage = 10, max_durability = 5, actual_durability = 5;
+                        }
+                    }
+                }
+                break;
+            case 32:
+                if (player->inventory[i].type == 3 && player->inventory[i].resource.id == OAK && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 3 && player->inventory[j].resource.id == DIAMOND && player->inventory[j].resource.quantity >= 8){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 8;
+                            name = "DIAMOND_HAMMER";
+                            damage = 20, max_durability = 5, actual_durability = 5;
                         }
                     }
                 }
@@ -213,5 +249,155 @@ int canCreateWOODENSWORD(int id, Player *player){
         }
     }
     create_weapon(i, player, id, name, damage, max_durability, actual_durability);
+    return 0;
+}
+
+void create_armor(int index, Player *player, int id){
+    player->inventory[index].type = ARMOR;
+    Armor *armor = &player->inventory[index].armor;
+    armor->id = id;
+}
+
+int canCreateARMOR(int id, Player *player){
+    int i;
+    for(i = 0; i < 10; i++){
+        switch (id) {
+            case 11:
+                if (player->inventory[i].type == 5 && player->inventory[i].resource.id == ROCK && player->inventory[i].resource.quantity >= 10) {
+                    player->inventory[i].resource.quantity -= 10;
+                }
+                break;
+            case 22:
+                if (player->inventory[i].type == 5 && player->inventory[i].resource.id == IRON && player->inventory[i].resource.quantity >= 12) {
+                    player->inventory[i].resource.quantity -= 12;
+                }
+                break;
+            case 33:
+                if (player->inventory[i].type == 5 && player->inventory[i].resource.id == DIAMOND && player->inventory[i].resource.quantity >= 16) {
+                    player->inventory[i].resource.quantity -= 16;
+                }
+                break;
+            default:
+                printf("mauvaise id");
+                break;
+        }
+    }
+    create_armor(i, player, id);
+}
+
+void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability){
+    player->inventory[index].type = TOOL;
+    Tool* tool = &player->inventory[index].tool;
+    tool->id = id;
+    tool->max_durability = max_durability;
+    tool->actual_durability = actual_durability;
+    strcpy(tool->name, name);
+}
+
+int canCreateTOOL(int id, Player *player){
+    int i, j;
+    float max_durability, actual_durability;
+    char *name;
+    for(i = 0; i < 10; i++) {
+        switch (id) {
+            case 2:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
+                    player->inventory[i].resource.quantity -= 3;
+                    name = "WOODEN_PICKAXE";
+                    max_durability = 10, actual_durability = 10;
+                }
+                break;
+            case 12:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 3;
+                            name = "STONE_PICKAXE";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 23:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 4){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 4;
+                            name = "IRON_PICKAXE";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 4:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
+                    player->inventory[i].resource.quantity -= 3;
+                    name = "WOODEN_AXE";
+                    max_durability = 10, actual_durability = 10;
+                }
+                break;
+            case 14:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 3;
+                            name = "STONE_AXE";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 25:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 4){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 4;
+                            name = "IRON_AXE";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 3:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
+                    player->inventory[i].resource.quantity -= 3;
+                    name = "WOODEN_BILLHOOK";
+                    max_durability = 10, actual_durability = 10;
+                }
+                break;
+            case 13:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == ROCK && player->inventory[j].resource.quantity >= 3){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 3;
+                            name = "STONE_BILLHOOK";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            case 24:
+                if (player->inventory[i].type == 2 && player->inventory[i].resource.id == BEECH && player->inventory[i].resource.quantity >= 2){
+                    for(j = 0; j <= 9; j++){
+                        if(player->inventory[j].type == 2 && player->inventory[j].resource.id == IRON && player->inventory[j].resource.quantity >= 4){
+                            player->inventory[i].resource.quantity -= 2;
+                            player->inventory[j].resource.quantity -= 4;
+                            name = "IRON_BILLHOOK";
+                            max_durability = 10, actual_durability = 10;
+                        }
+                    }
+                }
+                break;
+            default:
+                printf("mauvaise id");
+                break;
+        }
+    }
+    create_tool(i, player, id, name, max_durability, actual_durability);
     return 0;
 }
