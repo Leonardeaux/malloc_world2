@@ -116,27 +116,19 @@ void spawn_player(Player* player, int** map, int side);
 
 void initialize(Player *player);
 
+int isWeapon(Item item);
+
+int getWeapon(Player* player1);
+
+int isArmure(int index);
+
+int canGetArmure(int *liste);
+
 int canGetWeapon(Player *player);
 
 int canGetArmor(Player *player);
 
 int nbItemLibre(Player *player);
-
-int canCreateWOODENSWORD(int id, Player *player);
-
-void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);
-
-void create_armor(int index, Player *player, int id);
-
-int canCreateARMOR(int id, Player *player);
-
-void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability);
-
-int canCreateTOOL(int id, Player *player);
-
-int canCreateCONSUMABLE(int id, Player *player);
-
-void create_Consumable(int index, Player *player, int id);
 
 //int nbItem(int *index, int* inventory);
 

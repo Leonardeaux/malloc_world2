@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.c">
+			<Option target="malloc_world2"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h">
+			<Option target="malloc_world2"/>
+		</Unit>
 		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/main.c">
 			<Option target="malloc_world2"/>
 		</Unit>

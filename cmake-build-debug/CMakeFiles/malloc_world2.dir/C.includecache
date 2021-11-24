@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+map.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/map.h
+player.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h
+utils.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/utils.h
+craft.h
+C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h
+
 C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.h
 
 C:/Users/jeffr/Documents/GitHub/malloc_world2/main.c
