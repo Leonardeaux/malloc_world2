@@ -134,6 +134,10 @@ void create_tool(int index, Player *player, int id, char* name, float max_durabi
 
 int canCreateTOOL(int id, Player *player);
 
+int canCreateCONSUMABLE(int id, Player *player);
+
+void create_Consumable(int index, Player *player, int id);
+
 //int nbItem(int *index, int* inventory);
 
 #endif

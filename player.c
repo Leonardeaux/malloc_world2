@@ -401,3 +401,36 @@ int canCreateTOOL(int id, Player *player){
     create_tool(i, player, id, name, max_durability, actual_durability);
     return 0;
 }
+
+int canCreateCONSUMABLE(int id, Player *player){
+    int i;
+    for(i = 0; i < 10; i++){
+        switch (id) {
+            case 7:
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == GRASS && player->inventory[i].resource.quantity >= 2) {
+                    player->inventory[i].resource.quantity -= 2;
+                }
+                break;
+            case 18:
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == LAVENDER && player->inventory[i].resource.quantity >= 2) {
+                    player->inventory[i].resource.quantity -= 2;
+                }
+                break;
+            case 29:
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == HEMP && player->inventory[i].resource.quantity >= 2) {
+                    player->inventory[i].resource.quantity -= 2;
+                }
+                break;
+            default:
+                printf("mauvaise id");
+                break;
+        }
+    }
+    create_armor(i, player, id);
+}
+
+void create_Consumable(int index, Player *player, int id){
+    player->inventory[index].type = CONSUMABLE;
+    Consumable *consumable = &player->inventory[index].consumable;
+    consumable->id = id;
+}
