@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/malloc_world2.dir/coffre.c.obj"
   "CMakeFiles/malloc_world2.dir/craft.c.obj"
   "CMakeFiles/malloc_world2.dir/main.c.obj"
   "CMakeFiles/malloc_world2.dir/map.c.obj"

@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/jeffr/Documents/GitHub/malloc_world2/coffre.c" "C:/Users/jeffr/Documents/GitHub/malloc_world2/cmake-build-debug/CMakeFiles/malloc_world2.dir/coffre.c.obj"
   "C:/Users/jeffr/Documents/GitHub/malloc_world2/craft.c" "C:/Users/jeffr/Documents/GitHub/malloc_world2/cmake-build-debug/CMakeFiles/malloc_world2.dir/craft.c.obj"
   "C:/Users/jeffr/Documents/GitHub/malloc_world2/main.c" "C:/Users/jeffr/Documents/GitHub/malloc_world2/cmake-build-debug/CMakeFiles/malloc_world2.dir/main.c.obj"
   "C:/Users/jeffr/Documents/GitHub/malloc_world2/map.c" "C:/Users/jeffr/Documents/GitHub/malloc_world2/cmake-build-debug/CMakeFiles/malloc_world2.dir/map.c.obj"
