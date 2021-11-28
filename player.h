@@ -5,15 +5,15 @@ typedef struct Weapon{
     int id;
     char name[255];
     int damage;
-    float max_durability;
-    float actual_durability;
+    int max_durability;
+    int actual_durability;
 } Weapon;
 
 typedef struct Tool{
     int id;
     char name[255];
-    float max_durability;
-    float actual_durability;
+    int max_durability;
+    int actual_durability;
 } Tool;
 
 typedef struct Resource{
@@ -25,13 +25,12 @@ typedef struct Resource{
 typedef struct Consumable{
     int id;
     char name[255];
+    int hp_gain;
 } Consumable;
 
 typedef struct Armor{
     int id;
-    float damage_reduction;
-    float max_durability;
-    float actual_durability;
+    double damage_reduction;
     char name[255];
 } Armor;
 
@@ -109,12 +108,66 @@ typedef struct Player{
     int actual_map;
     int coord_x;
     int coord_y;
-    int experience;
+    int xp;
+    int next_xp;
     int level;
     int hp;
     int hp_max;
     Item inventory[10];
+    Item coffre[34];
 } Player;
+
+static char* id_items_name[] = {
+        "",
+        "Wooden_sword",
+        "Wooden_pickaxe",
+        "Wooden_billhook",
+        "Wooden_pickaxe",
+        "Fir",
+        "Rock",
+        "Grass",
+        "Stone_sword",
+        "Stone_spear",
+        "Stone_hammer",
+        "Stone_breastplate",
+        "Stone_pickaxe",
+        "Stone_billhook",
+        "Stone_axe",
+        "Potion_of_life_I",
+        "Beech",
+        "Iron",
+        "Lavender",
+        "Iron_sword",
+        "Iron_spear",
+        "Iron_hammer",
+        "Iron_breastplate",
+        "Iron_pickaxe",
+        "Iron_billhook",
+        "Iron_axe",
+        "Potion_of_life_II",
+        "Oak",
+        "Diamond",
+        "Hemp",
+        "Diamond_sword",
+        "Diamond_spear",
+        "Diamond_hammer",
+        "Diamond_breastplate",
+        "Potion_of_life_III"
+};
+
+static int xp_gain_hp_tab[] = {
+        0,
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        50,
+        50,
+        75,
+        75
+};
 
 Player* create_player(int*** map, int side, char* username);
 
@@ -122,20 +175,52 @@ void spawn_player(Player* player, int** map, int side);
 
 void initialize_player(Player *player);
 
-int nb_free_space(Player *player);
+int nb_free_space(Player* player);
 
 int locale_resource(int id_resource, Player *player);
 
-int can_recolt_resource(int id_entity, int quantity, Player *player);
+int locale_resource_quantity(int id_resource, Player *player, int quantity);
 
-int teleport_player(int*** map, int side, Player* player, int portal_x, int portal_y);
+int locale_first_free_case(Player *player);
 
-void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability);
+int can_recolt_resource(int id_entity, Player* player);
 
-void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability);
+int recolt_resource_process(int id_resource, int quantity, Player* player);
 
-void create_resource(int index, Player *player, int id, char* name, int quantity);
+int can_teleport_player(int*** map, int side, Player* player, int portal_case);
 
-void create_armor(int index, Player *player, int id, char* name, float damage_reduction, float max_durability, float actual_durability);
+void teleport_player(int*** map, int side, Player* player, int portal_case, int new_map);
+
+void create_weapon(int index, Player* player, int id, char* name, int damage, int max_durability, int actual_durability);
+
+void create_tool(int index, Player* player, int id, char* name, int max_durability, int actual_durability);
+
+void create_resource(int index, Player* player, int id, char* name, int quantity);
+
+void create_armor(int index, Player* player, int id, char* name, double damage_reduction);
+
+void create_consumable(int index, Player *player, int id, char* name, int hp_gain);
+
+void print_player(Player* player);
+
+void print_inventory(Player* player);
+
+int weapon_in_inventory(Player* player, int id_weapon);
+
+int tool_in_inventory(Player* player, int id_tool);
+
+int verif_tool_entity(int id_entity);
+
+double entity_coeff(int id_entity);
+
+int entity_rank(int id_entity);
+
+int* valable_tools(int id_entity);
+
+int* weapons_in_inventory(Player* player);
+
+int* consumables_in_inventory(Player* player);
+
+int armor_in_inventory(Player* player);
 
 #endif

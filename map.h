@@ -6,10 +6,11 @@
 #define MIN_PLANT 3
 #define MIN_ROCK 3
 #define MIN_WOOD 3
+#define SIDE 10
 
 typedef enum entity {
-    PORTAL_1_2 = -3,
-    PORTAL_2_3 = -2,
+    PORTAL_1_2 = -2,
+    PORTAL_2_3 = -3,
     IMPOSSIBLE = -1,
     OPEN = 0,
     PLAYER = 1,
@@ -55,6 +56,10 @@ int*** malloc_map(int side);
 
 void generate_portals(int*** map, int side);
 
+void generate_monsters(int*** map , int side);
+
+void generate_boss(int*** map , int side);
+
 int verif_map(int*** map, int side);
 
 void square_access(int** map, int side, int x, int y);
@@ -67,6 +72,6 @@ void free_map(int*** map, int side);
 
 int check_valid_case(int** map, int side, int x, int y, char direction);
 
-int collect_resource();
+int* return_first_free_case(int** map, int side, int a_case);
 
 #endif

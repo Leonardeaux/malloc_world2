@@ -3,6 +3,7 @@
 #include <time.h>
 #include "map.h"
 #include "utils.h"
+#include "monster.h"
 #include "perlin_noise.h"
 
 /*
@@ -23,7 +24,6 @@
  * 11 = bois zone 3 (>3)
  */
 
-//TODO GERER LES PETITES MAP
 /***
  * Fonction permettant la création d'un tableau à deux dimensions qui fait office de map
  * @param side côté de la map
@@ -50,17 +50,17 @@ int*** create_maps(int side){
         /* Génération des cases avec l'algorithme du bruit de Perlin */
         for(int i = 0; i < 3; i++){
             if(i == 0){
-                plant = 3;
-                rock = 4;
-                wood = 5;
+                plant = PLANT_1;
+                rock = ROCK_1;
+                wood = WOOD_1;
             } else if(i == 1){
-                plant = 6;
-                rock = 7;
-                wood = 8;
+                plant = PLANT_2;
+                rock = ROCK_2;
+                wood = WOOD_2;
             } else{
-                plant = 9;
-                rock = 10;
-                wood = 11;
+                plant = PLANT_3;
+                rock = ROCK_3;
+                wood = WOOD_3;
             }
             for(int x = 0; x < side; x++){
                 for(int y = 0; y < side; y++){
@@ -81,6 +81,9 @@ int*** create_maps(int side){
         }
 
         generate_portals(map, side);
+        generate_monsters(map, side);
+        generate_boss(map, side);
+
 
     } while(!verif_map(map, side));
 
@@ -130,9 +133,9 @@ void generate_portals(int*** map, int side){
         square_access(map[i], side, x_pnj, y_pnj);
 
         if(i == 0){
-            map[i][x_portal][y_portal] = -3;
+            map[i][x_portal][y_portal] = PORTAL_1_2;
         } else if(i == 1){
-            map[i][x_portal][y_portal] = -2;
+            map[i][x_portal][y_portal] = PORTAL_2_3;
 
             int x_portal2;
             int y_portal2;
@@ -143,14 +146,71 @@ void generate_portals(int*** map, int side){
             } while(x_portal2 == x_portal && y_portal2 == y_portal);
 
             square_access(map[i], side, x_portal2, y_portal2);
-            map[i][x_portal2][y_portal2] = -3;
+            map[i][x_portal2][y_portal2] = PORTAL_1_2;
         } else {
-            map[i][x_portal][y_portal] = -2;
+            map[i][x_portal][y_portal] = PORTAL_2_3;
         }
 
         square_access(map[i], side, x_portal, y_portal);
     }
 
+}
+
+void generate_monsters(int*** map , int side){
+    srand(time(NULL ));
+
+    int x_monster;
+    int y_monster;
+    int monster;
+
+    for(int i = 0; i < 3; i++){
+        if(i == 0){
+            for(monster = PIOU; monster <= BOUFTOU; monster++){
+                do{
+                    x_monster = rand() % (side);
+                    y_monster = rand() % (side);
+
+                } while(map[i][x_monster][y_monster] != 0);
+
+                map[i][x_monster][y_monster] = monster;
+            }
+        } else if(i == 1){
+            for(monster = CRAQUELEUR; monster <= POOLAY; monster++){
+                do{
+                    x_monster = rand() % (side);
+                    y_monster = rand() % (side);
+
+                } while(map[i][x_monster][y_monster] != 0);
+
+                map[i][x_monster][y_monster] = monster;
+            }
+        } else {
+            for(monster = BOUFMOUTH; monster <= APERIGLOURS; monster++){
+                do{
+                    x_monster = rand() % (side);
+                    y_monster = rand() % (side);
+
+                } while(map[i][x_monster][y_monster] != 0);
+
+                map[i][x_monster][y_monster] = monster;
+            }
+        }
+    }
+}
+
+void generate_boss(int*** map , int side){
+    srand(time(NULL ));
+
+    int x_boos;
+    int y_boos;
+
+    do{
+        x_boos = rand() % (side);
+        y_boos = rand() % (side);
+
+    } while(map[2][x_boos][y_boos] != 0);
+
+    map[2][x_boos][y_boos] = COMTE_HAREBOURG;
 }
 
 /***
@@ -274,7 +334,7 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
     switch (direction) {
         case 'u':
             if(y > 0){
-                if(map[x][y - 1] != -1){
+                if(map[x][y - 1] != IMPOSSIBLE){
                     return 1;
                 }
             }
@@ -282,7 +342,7 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
 
         case 'r':
             if(x < side - 1){
-                if(map[x + 1][y] != -1){
+                if(map[x + 1][y] != IMPOSSIBLE){
                     return 1;
                 }
             }
@@ -290,7 +350,7 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
 
         case 'd':
             if(y < side - 1){
-                if(map[x][y + 1] != -1){
+                if(map[x][y + 1] != IMPOSSIBLE){
                     return 1;
                 }
             }
@@ -298,7 +358,7 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
 
         case 'l':
             if(x > 0){
-                if(map[x - 1][y] != -1){
+                if(map[x - 1][y] != IMPOSSIBLE){
                     return 1;
                 }
             }
@@ -311,6 +371,37 @@ int check_valid_case(int** map, int side, int x, int y, char direction){
     return 0;
 }
 
-int collect_resource(int id_entity, Player *player, ){
+int* return_first_free_case(int** map, int side, int a_case){
+    int* coords = malloc(sizeof(int) * 2);
+    if(coords == NULL){
+        exit_and_write_error("Erreur d'allocation mémoire lors du tableau de resultat de la fonction return_first_free_case");
+    }
 
+    for(int i = 0; i < side; i++){
+        for(int j = 0; j < side; j++){
+            if(map[i][j] == a_case){
+                if(j > 0 && map[i][j - 1] == 0){
+                    coords[0] = i;
+                    coords[1] = j - 1;
+                    return coords;
+                } else if(i < side - 1 && map[i + 1][j] == 0){
+                    coords[0] = i + 1;
+                    coords[1] = j;
+                    return coords;
+                } else if(j < side - 1 && map[i][j + 1] == 0){
+                    coords[0] = i;
+                    coords[1] = j + 1;
+                    return coords;
+                } else {
+                    coords[0] = i - 1;
+                    coords[1] = j;
+                    return coords;
+                }
+            }
+        }
+    }
+    coords[0] = -1;
+    coords[1] = -1;
+
+    return coords;
 }
