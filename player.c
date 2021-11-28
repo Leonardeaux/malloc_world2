@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "map.h"
 #include "player.h"
 #include "utils.h"
@@ -13,21 +14,21 @@ Player* create_player(int*** map, int side, char* username){
     }
 
     APlayer->xp = 1;
-    APlayer->next_xp = 100;
-    APlayer->level = 8;
+    APlayer->next_xp = (int)exp((double)2);
+    APlayer->level = 1;
     APlayer->hp_max = 100;
-    APlayer->hp = 40;
+    APlayer->hp = 100;
     APlayer->actual_map = 0;
     strcpy(APlayer->username, username);
     initialize_player(APlayer);
-    create_weapon(0, APlayer, WOODEN_SWORD, id_items_name[WOODEN_SWORD], 10, 100, 100);
-    create_tool(1, APlayer, WOODEN_AXE, id_items_name[WOODEN_AXE], 100, 10);
-    create_tool(2, APlayer, STONE_BILLHOOK, id_items_name[STONE_BILLHOOK], 100, 100);
-    create_tool(3, APlayer, WOODEN_PICKAXE, id_items_name[WOODEN_PICKAXE], 100, 100);
+    create_weapon(0, APlayer, WOODEN_SWORD, id_items_name[WOODEN_SWORD], 1, 10, 10);
+    create_tool(1, APlayer, WOODEN_AXE, id_items_name[WOODEN_AXE], 10, 10);
+    create_tool(2, APlayer, STONE_BILLHOOK, id_items_name[STONE_BILLHOOK], 10, 10);
+    create_tool(3, APlayer, WOODEN_PICKAXE, id_items_name[WOODEN_PICKAXE], 10, 10);
 //    create_weapon(4, APlayer, STONE_HAMMER, id_items_name[STONE_HAMMER], 10, 100, 100);
 //    create_weapon(5, APlayer, DIAMOND_SPEAR, id_items_name[DIAMOND_SPEAR], 10, 100, 100);
-    create_consumable(6, APlayer, POTION_OF_LIFE_I, id_items_name[POTION_OF_LIFE_I], 50);
-    create_consumable(7, APlayer, POTION_OF_LIFE_II, id_items_name[POTION_OF_LIFE_II], 100);
+//    create_consumable(6, APlayer, POTION_OF_LIFE_I, id_items_name[POTION_OF_LIFE_I], 50);
+//    create_consumable(7, APlayer, POTION_OF_LIFE_II, id_items_name[POTION_OF_LIFE_II], 100);
 //    create_resource(4, APlayer, FIR, id_items_name[FIR], 20);
 //    create_resource(5, APlayer, FIR, id_items_name[FIR], 20);
 //    create_resource(6, APlayer, FIR, id_items_name[FIR], 20);

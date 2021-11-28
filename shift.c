@@ -9,6 +9,7 @@
 #include "utils.h"
 #include "monster.h"
 #include "fight.h"
+#include "saving.h"
 
 void print_menu(int*** map, int side, Player* player){
     char* response = malloc(sizeof(char) * 1000);
