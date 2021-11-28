@@ -123,6 +123,8 @@ char* case_forward(int*** map, int side, Player* player, char direction){
             return "Vous etes decede\n";
         } else if(process_return == 8){
             return "\n";
+        } else if(process_return == 9){
+            return "Vous avez pris la fuite\n";
         } else if(process_return == -10){
             return "Erreur ???\n";
         }
@@ -165,23 +167,24 @@ int case_process(int*** map, int side, int a_case, Player *player) {
         return 1;
 
     } else if(a_case == NPC){
-//        PNJmenu(player);
+        PNJmenu(player);
         return 8;
 
     } else if(a_case >= PLANT_1 && a_case <= WOOD_3){
         srand(time(NULL ));
 
         int quantity = rand() % 4 + 1;
-        int can_recolt = can_recolt_resource(a_case, player);
+        int tool_index = can_recolt_resource(a_case, player);
 
-        if(can_recolt == 1){
+        if(tool_index != -1){
             if(recolt_resource_process(entity_bitmap[a_case], quantity, player)){
+                tools_management(a_case, tool_index, player);
                 return 1;
             } else {
                 return -1;
             }
         } else{
-            return can_recolt;
+            return -2;
         }
 
     } else if(a_case > WOOD_3 && a_case <= END_BOSS){
@@ -193,6 +196,8 @@ int case_process(int*** map, int side, int a_case, Player *player) {
             return 6;
         } else if(fight == -1){
             return 7;
+        } else if(fight == 3){
+            return 9;
         }
     } else if(a_case == PORTAL_1_2 || a_case == PORTAL_2_3){
         int teleportation = can_teleport_player(map, side, player, a_case);

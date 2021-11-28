@@ -1,21 +1,20 @@
 #ifndef MALLOC_WORLD2_CRAFT_H
 #define MALLOC_WORLD2_CRAFT_H
 
-int canCreateWOODENSWORD(int id, Player *player);
+void create_weapon2(int index, Player *player, int id, char* name, int damage, int max_durability, int actual_durability);
 
-//void create_weapon(int index, Player *player, int id, char* name, int damage, int max_durability, int actual_durability);
+void canCreateWeapon(int id, Player *player);
 
-//void create_armor(int index, Player *player, int id);
+void create_armor2(int index, Player *player, int id, char* name, double damage_reduction);
 
-int canCreateARMOR(int id, Player *player);
+void canCreateARMOR(int id, Player *player);
 
-//void create_tool(int index, Player *player, int id, char* name, int max_durability, int actual_durability);
+void create_tool2(int index, Player *player, int id, char* name, int max_durability, int actual_durability);
 
-int canCreateTOOL(int id, Player *player);
+void canCreateTOOL(int id, Player *player);
 
-int canCreateCONSUMABLE(int id, Player *player);
+void create_consumable2(int index, Player *player, int id, char* name, int hp_gain);
 
-//void create_Consumable(int index, Player *player, int id);
-
+void canCreateCONSUMABLE(int id, Player *player);
 
 #endif //MALLOC_WORLD2_CRAFT_H

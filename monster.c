@@ -78,7 +78,7 @@ void create_monster_zone_one(Monster* monster){
 void create_monster_zone_two(Monster* monster){
     srand(time(NULL ));
 
-    strcpy(monster->name, id_monster_name[monster->id - 11]);
+    strcpy(monster->name, id_monster_name[monster->id - 12]);
 
     if(monster->id == CRAQUELEUR){
         monster->hp_max = rand() % 25 + 20;
@@ -98,7 +98,7 @@ void create_monster_zone_two(Monster* monster){
 void create_monster_zone_three(Monster* monster){
     srand(time(NULL ));
 
-    strcpy(monster->name, id_monster_name[monster->id - 11]);
+    strcpy(monster->name, id_monster_name[monster->id - 12]);
 
     if(monster->id == BOUFMOUTH){
         monster->hp_max = rand() %  35 + 31;

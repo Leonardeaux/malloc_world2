@@ -12,7 +12,6 @@
 int open_fight(Player* player, Monster* monster){
 
     int choice;
-
     int* weapons = weapons_in_inventory(player);
     int* consumables = consumables_in_inventory(player);
     int armor = armor_in_inventory(player);
@@ -23,6 +22,7 @@ int open_fight(Player* player, Monster* monster){
 
     while(player->hp > 0 && monster->hp > 0){
         do {
+            fflush(stdin);
             print_inventory(player);
             printf("Vous avez %d hp\n", player->hp);
             printf("Que voulez-vous faire ?\n");
@@ -44,7 +44,6 @@ int open_fight(Player* player, Monster* monster){
                     printf("La fuite a echoue\n");
                 }
             }
-            fflush(stdin);
         } while(choice != '1' && choice != '2' && choice != '3');
         fflush(stdin);
 
@@ -54,12 +53,14 @@ int open_fight(Player* player, Monster* monster){
     }
 
     if(player->hp <= 0){
+        free(monster);
         return -1;
     } else if(monster->hp <= 0){
         process_xp(player, monster);
-
+        free(monster);
         return 1;
     } else {
+        free(monster);
         return 0;
     }
 }

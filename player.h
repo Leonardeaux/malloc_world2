@@ -122,7 +122,7 @@ static char* id_items_name[] = {
         "Wooden_sword",
         "Wooden_pickaxe",
         "Wooden_billhook",
-        "Wooden_pickaxe",
+        "Wooden_axe",
         "Fir",
         "Rock",
         "Grass",
@@ -184,6 +184,8 @@ int locale_resource_quantity(int id_resource, Player *player, int quantity);
 int locale_first_free_case(Player *player);
 
 int can_recolt_resource(int id_entity, Player* player);
+
+void tools_management(int id_entity, int tool_index, Player *player);
 
 int recolt_resource_process(int id_resource, int quantity, Player* player);
 

@@ -24,8 +24,8 @@ Player* create_player(int*** map, int side, char* username){
     create_tool(1, APlayer, WOODEN_AXE, id_items_name[WOODEN_AXE], 100, 10);
     create_tool(2, APlayer, STONE_BILLHOOK, id_items_name[STONE_BILLHOOK], 100, 100);
     create_tool(3, APlayer, WOODEN_PICKAXE, id_items_name[WOODEN_PICKAXE], 100, 100);
-    create_weapon(4, APlayer, STONE_HAMMER, id_items_name[STONE_HAMMER], 10, 100, 100);
-    create_weapon(5, APlayer, DIAMOND_SPEAR, id_items_name[DIAMOND_SPEAR], 10, 100, 100);
+//    create_weapon(4, APlayer, STONE_HAMMER, id_items_name[STONE_HAMMER], 10, 100, 100);
+//    create_weapon(5, APlayer, DIAMOND_SPEAR, id_items_name[DIAMOND_SPEAR], 10, 100, 100);
     create_consumable(6, APlayer, POTION_OF_LIFE_I, id_items_name[POTION_OF_LIFE_I], 50);
     create_consumable(7, APlayer, POTION_OF_LIFE_II, id_items_name[POTION_OF_LIFE_II], 100);
 //    create_resource(4, APlayer, FIR, id_items_name[FIR], 20);
@@ -131,25 +131,19 @@ int can_recolt_resource(int id_entity, Player *player){
                 if(player->inventory[tool_index].tool.actual_durability >= (player->inventory[tool_index].tool.max_durability *
                                                                             entity_coeff(id_entity))){
                     free(valable_tools_tab);
-                    player->inventory[tool_index].tool.actual_durability -= (int)(player->inventory[tool_index].tool.max_durability * entity_coeff(id_entity));
-                    return 1;
+//                    player->inventory[tool_index].tool.actual_durability -= (int)(player->inventory[tool_index].tool.max_durability * entity_coeff(id_entity));
+                    return tool_index;
                 }
             }
         }
     }
     free(valable_tools_tab);
-    return -2;
+    return -1;
+}
 
-//    if(tool_index != -1){
-//        if(player->inventory[tool_index].tool.actual_durability >= (player->inventory[tool_index].tool.max_durability *
-//                                                                    entity_coeff(id_entity))){
-//            return 1;
-//        } else {
-//            return -3;
-//        }
-//    } else {
-//        return -2;
-//    }
+void tools_management(int id_entity, int tool_index, Player *player){
+
+    player->inventory[tool_index].tool.actual_durability -= (int)(player->inventory[tool_index].tool.max_durability * entity_coeff(id_entity));
 }
 
 int recolt_resource_process(int id_resource, int quantity, Player *player){
@@ -268,6 +262,7 @@ void create_armor(int index, Player *player, int id, char* name, double damage_r
     Armor * AArmor = &player->inventory[index].armor;
 
     AArmor->id = id;
+    AArmor->damage_reduction = damage_reduction;
     strcpy(AArmor->name, name);
 }
 

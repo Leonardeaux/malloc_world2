@@ -9,8 +9,6 @@
 int main(int argc, const char **argv) {
     int*** map = create_maps(SIDE);
 
-    printf("\n");
-
     Player* APlayer = create_player(map, SIDE, "Enzo");
 
 //    printf("\n%d %d\n", APlayer->coord_x, APlayer->coord_y);
