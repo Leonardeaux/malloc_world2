@@ -103,12 +103,6 @@
 		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/player.h">
 			<Option target="malloc_world2"/>
 		</Unit>
-		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/recolt.c">
-			<Option target="malloc_world2"/>
-		</Unit>
-		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/recolt.h">
-			<Option target="malloc_world2"/>
-		</Unit>
 		<Unit filename="C:/Users/jeffr/Documents/GitHub/malloc_world2/shift.c">
 			<Option target="malloc_world2"/>
 		</Unit>

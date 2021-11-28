@@ -22,13 +22,10 @@ CMakeFiles/malloc_world2.dir/perlin_noise.c.obj: \
  ../perlin_noise.c \
  ../perlin_noise.h
 CMakeFiles/malloc_world2.dir/player.c.obj: \
- ../craft.h \
  ../map.h \
  ../player.c \
  ../player.h \
  ../utils.h
-CMakeFiles/malloc_world2.dir/recolt.c.obj: \
- ../recolt.c
 CMakeFiles/malloc_world2.dir/shift.c.obj: \
  ../map.h \
  ../player.h \

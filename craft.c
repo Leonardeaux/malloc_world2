@@ -10,9 +10,10 @@
 #include "utils.h"
 #include "craft.h"
 
-void create_weapon(int index, Player *player, int id, char* name, int damage, float max_durability, float actual_durability){
+void create_weapon(int index, Player *player, int id, char* name, int damage, int max_durability, int actual_durability){
     player->inventory[index].type = WEAPON;
     Weapon* AWeapon = &player->inventory[index].weapon;
+
     AWeapon->id = id;
     AWeapon->damage = damage;
     AWeapon->max_durability = max_durability;
@@ -20,8 +21,9 @@ void create_weapon(int index, Player *player, int id, char* name, int damage, fl
     strcpy(AWeapon->name, name);
 }
 
-int canCreateWOODENSWORD(int id, Player *player){
+void canCreateWeapon(int id, Player *player){
     int i, j, damage;
+    int create = 0;
     float max_durability, actual_durability;
     char *name;
     for(i = 0; i < 10; i++) {
@@ -30,6 +32,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                 if (player->inventory[i].type == 3 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
                     player->inventory[i].resource.quantity -= 3;
                     name = "WOODEN_SWORD";
+                    create = 1;
                     damage = 1, max_durability = 10, actual_durability = 10;
                 }
                 break;
@@ -40,6 +43,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
                             name = "STONE_SWORD";
+                            create = 1;
                             damage = 2, max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -52,6 +56,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 4;
                             name = "IRON_SWORD";
+                            create = 1;
                             damage = 5, max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -64,6 +69,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 5;
                             name = "DIAMOND_SWORD";
+                            create = 1;
                             damage = 10, max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -76,6 +82,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 4;
                             name = "STONE_SPEAR";
+                            create = 1;
                             damage = 3, max_durability = 8, actual_durability = 8;
                         }
                     }
@@ -88,6 +95,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 5;
                             name = "IRON_SPEAR";
+                            create = 1;
                             damage = 7, max_durability = 8, actual_durability = 8;
                         }
                     }
@@ -100,6 +108,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 3;
                             player->inventory[j].resource.quantity -= 6;
                             name = "DIAMOND_SPEAR";
+                            create = 1;
                             damage = 15, max_durability = 8, actual_durability = 8;
                         }
                     }
@@ -112,6 +121,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 6;
                             name = "STONE_HAMMER";
+                            create = 1;
                             damage = 4, max_durability = 5, actual_durability = 5;
                         }
                     }
@@ -124,6 +134,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 7;
                             name = "IRON_HAMMER";
+                            create = 1;
                             damage = 10, max_durability = 5, actual_durability = 5;
                         }
                     }
@@ -136,6 +147,7 @@ int canCreateWOODENSWORD(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 8;
                             name = "DIAMOND_HAMMER";
+                            create = 1;
                             damage = 20, max_durability = 5, actual_durability = 5;
                         }
                     }
@@ -146,54 +158,73 @@ int canCreateWOODENSWORD(int id, Player *player){
                 break;
         }
     }
-    create_weapon(i, player, id, name, damage, max_durability, actual_durability);
-    return 0;
+    if(create == 1){
+        create_weapon(i, player, id, name, damage, max_durability, actual_durability);
+    }
 }
 
-void create_armor(int index, Player *player, int id){
+void create_armor(int index, Player *player, int id, char* name, double damage_reduction){
     player->inventory[index].type = ARMOR;
-    Armor *armor = &player->inventory[index].armor;
-    armor->id = id;
+    Armor * AArmor = &player->inventory[index].armor;
+
+    AArmor->id = id;
+    strcpy(AArmor->name, name);
 }
 
-int canCreateARMOR(int id, Player *player){
+void canCreateARMOR(int id, Player *player){
     int i;
+    int create = 0;
+    double damage_reduction;
+    char *name;
     for(i = 0; i < 10; i++){
         switch (id) {
             case 11:
                 if (player->inventory[i].type == 5 && player->inventory[i].resource.id == ROCK && player->inventory[i].resource.quantity >= 10) {
                     player->inventory[i].resource.quantity -= 10;
+                    name = "STONE_BREASTPLATE";
+                    damage_reduction = 0.1;
+                    create = 1;
                 }
                 break;
             case 22:
                 if (player->inventory[i].type == 5 && player->inventory[i].resource.id == IRON && player->inventory[i].resource.quantity >= 12) {
                     player->inventory[i].resource.quantity -= 12;
+                    name = "IRON_BREASTPLATE";
+                    damage_reduction = 0.2;
+                    create = 1;
                 }
                 break;
             case 33:
                 if (player->inventory[i].type == 5 && player->inventory[i].resource.id == DIAMOND && player->inventory[i].resource.quantity >= 16) {
                     player->inventory[i].resource.quantity -= 16;
+                    name = "DIAMOND_BREASTPLATE";
+                    damage_reduction = 0.4;
+                    create = 1;
                 }
                 break;
             default:
-                printf("mauvaise id");
+                printf("erreur");
                 break;
         }
     }
-    create_armor(i, player, id);
+    if(create == 1){
+        create_armor(i, player, id, name, damage_reduction);
+    }
 }
 
-void create_tool(int index, Player *player, int id, char* name, float max_durability, float actual_durability){
+void create_tool(int index, Player *player, int id, char* name, int max_durability, int actual_durability){
     player->inventory[index].type = TOOL;
-    Tool* tool = &player->inventory[index].tool;
-    tool->id = id;
-    tool->max_durability = max_durability;
-    tool->actual_durability = actual_durability;
-    strcpy(tool->name, name);
+    Tool* ATool = &player->inventory[index].tool;
+
+    ATool->id = id;
+    ATool->max_durability = max_durability;
+    ATool->actual_durability = actual_durability;
+    strcpy(ATool->name, name);
 }
 
-int canCreateTOOL(int id, Player *player){
+void canCreateTOOL(int id, Player *player){
     int i, j;
+    int create = 0;
     float max_durability, actual_durability;
     char *name;
     for(i = 0; i < 10; i++) {
@@ -202,6 +233,7 @@ int canCreateTOOL(int id, Player *player){
                 if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
                     player->inventory[i].resource.quantity -= 3;
                     name = "WOODEN_PICKAXE";
+                    create = 1;
                     max_durability = 10, actual_durability = 10;
                 }
                 break;
@@ -212,6 +244,7 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
                             name = "STONE_PICKAXE";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -224,6 +257,7 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 4;
                             name = "IRON_PICKAXE";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -233,6 +267,7 @@ int canCreateTOOL(int id, Player *player){
                 if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
                     player->inventory[i].resource.quantity -= 3;
                     name = "WOODEN_AXE";
+                    create = 1;
                     max_durability = 10, actual_durability = 10;
                 }
                 break;
@@ -243,6 +278,7 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
                             name = "STONE_AXE";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -255,6 +291,7 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 4;
                             name = "IRON_AXE";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -264,6 +301,7 @@ int canCreateTOOL(int id, Player *player){
                 if (player->inventory[i].type == 2 && player->inventory[i].resource.id == FIR && player->inventory[i].resource.quantity >= 3) {
                     player->inventory[i].resource.quantity -= 3;
                     name = "WOODEN_BILLHOOK";
+                    create = 1;
                     max_durability = 10, actual_durability = 10;
                 }
                 break;
@@ -274,6 +312,7 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 3;
                             name = "STONE_BILLHOOK";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
@@ -286,37 +325,53 @@ int canCreateTOOL(int id, Player *player){
                             player->inventory[i].resource.quantity -= 2;
                             player->inventory[j].resource.quantity -= 4;
                             name = "IRON_BILLHOOK";
+                            create = 1;
                             max_durability = 10, actual_durability = 10;
                         }
                     }
                 }
                 break;
             default:
-                printf("mauvaise id");
+                printf("erreur");
                 break;
         }
     }
-    create_tool(i, player, id, name, max_durability, actual_durability);
-    return 0;
+    if(create == 1){
+        create_tool(i, player, id, name, max_durability, actual_durability);
+    }
 }
 
-int canCreateCONSUMABLE(int id, Player *player){
-    int i;
-    for(i = 0; i < 10; i++){
+void canCreateCONSUMABLE(int id, Player *player){
+    int i, hp;
+    int create = 0;
+    char *name;
+    for(i = 0; i < 10; i++) {
         switch (id) {
             case 7:
-                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == GRASS && player->inventory[i].resource.quantity >= 2) {
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == GRASS &&
+                    player->inventory[i].resource.quantity >= 2) {
                     player->inventory[i].resource.quantity -= 2;
+                    name = "POTION_OF_LIFE_I";
+                    hp = 30;
+                    create = 1;
                 }
                 break;
             case 18:
-                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == LAVENDER && player->inventory[i].resource.quantity >= 2) {
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == LAVENDER &&
+                    player->inventory[i].resource.quantity >= 2) {
                     player->inventory[i].resource.quantity -= 2;
+                    name = "POTION_OF_LIFE_II";
+                    hp = 80;
+                    create = 1;
                 }
                 break;
             case 29:
-                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == HEMP && player->inventory[i].resource.quantity >= 2) {
+                if (player->inventory[i].type == 4 && player->inventory[i].resource.id == HEMP &&
+                    player->inventory[i].resource.quantity >= 2) {
                     player->inventory[i].resource.quantity -= 2;
+                    name = "POTION_OF_LIFE_III";
+                    hp = 200;
+                    create = 1;
                 }
                 break;
             default:
@@ -324,13 +379,18 @@ int canCreateCONSUMABLE(int id, Player *player){
                 break;
         }
     }
-    create_armor(i, player, id);
+    if(create == 1){
+        create_consumable(i, player, id, name, hp);
+    }
 }
 
-void create_Consumable(int index, Player *player, int id){
+void create_consumable(int index, Player *player, int id, char* name, int hp_gain){
     player->inventory[index].type = CONSUMABLE;
-    Consumable *consumable = &player->inventory[index].consumable;
-    consumable->id = id;
+    Consumable* AConsumable = &player->inventory[index].consumable;
+
+    AConsumable->id = id;
+    AConsumable->hp_gain = hp_gain;
+    strcpy(AConsumable->name, name);
 }
 
 

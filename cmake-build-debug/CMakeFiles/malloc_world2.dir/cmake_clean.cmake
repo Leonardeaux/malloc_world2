@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/malloc_world2.dir/map.c.obj"
   "CMakeFiles/malloc_world2.dir/perlin_noise.c.obj"
   "CMakeFiles/malloc_world2.dir/player.c.obj"
-  "CMakeFiles/malloc_world2.dir/recolt.c.obj"
   "CMakeFiles/malloc_world2.dir/shift.c.obj"
   "CMakeFiles/malloc_world2.dir/utils.c.obj"
   "libmalloc_world2.dll.a"

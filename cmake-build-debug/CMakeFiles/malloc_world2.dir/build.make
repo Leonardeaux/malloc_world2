@@ -121,24 +121,10 @@ CMakeFiles/malloc_world2.dir/player.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc_world2.dir/player.c.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\jeffr\Documents\GitHub\malloc_world2\player.c -o CMakeFiles\malloc_world2.dir\player.c.s
 
-CMakeFiles/malloc_world2.dir/recolt.c.obj: CMakeFiles/malloc_world2.dir/flags.make
-CMakeFiles/malloc_world2.dir/recolt.c.obj: CMakeFiles/malloc_world2.dir/includes_C.rsp
-CMakeFiles/malloc_world2.dir/recolt.c.obj: ../recolt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/malloc_world2.dir/recolt.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\malloc_world2.dir\recolt.c.obj -c C:\Users\jeffr\Documents\GitHub\malloc_world2\recolt.c
-
-CMakeFiles/malloc_world2.dir/recolt.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc_world2.dir/recolt.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\jeffr\Documents\GitHub\malloc_world2\recolt.c > CMakeFiles\malloc_world2.dir\recolt.c.i
-
-CMakeFiles/malloc_world2.dir/recolt.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc_world2.dir/recolt.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\jeffr\Documents\GitHub\malloc_world2\recolt.c -o CMakeFiles\malloc_world2.dir\recolt.c.s
-
 CMakeFiles/malloc_world2.dir/shift.c.obj: CMakeFiles/malloc_world2.dir/flags.make
 CMakeFiles/malloc_world2.dir/shift.c.obj: CMakeFiles/malloc_world2.dir/includes_C.rsp
 CMakeFiles/malloc_world2.dir/shift.c.obj: ../shift.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/malloc_world2.dir/shift.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/malloc_world2.dir/shift.c.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\malloc_world2.dir\shift.c.obj -c C:\Users\jeffr\Documents\GitHub\malloc_world2\shift.c
 
 CMakeFiles/malloc_world2.dir/shift.c.i: cmake_force
@@ -152,7 +138,7 @@ CMakeFiles/malloc_world2.dir/shift.c.s: cmake_force
 CMakeFiles/malloc_world2.dir/utils.c.obj: CMakeFiles/malloc_world2.dir/flags.make
 CMakeFiles/malloc_world2.dir/utils.c.obj: CMakeFiles/malloc_world2.dir/includes_C.rsp
 CMakeFiles/malloc_world2.dir/utils.c.obj: ../utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/malloc_world2.dir/utils.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/malloc_world2.dir/utils.c.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\malloc_world2.dir\utils.c.obj -c C:\Users\jeffr\Documents\GitHub\malloc_world2\utils.c
 
 CMakeFiles/malloc_world2.dir/utils.c.i: cmake_force
@@ -166,7 +152,7 @@ CMakeFiles/malloc_world2.dir/utils.c.s: cmake_force
 CMakeFiles/malloc_world2.dir/craft.c.obj: CMakeFiles/malloc_world2.dir/flags.make
 CMakeFiles/malloc_world2.dir/craft.c.obj: CMakeFiles/malloc_world2.dir/includes_C.rsp
 CMakeFiles/malloc_world2.dir/craft.c.obj: ../craft.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/malloc_world2.dir/craft.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/malloc_world2.dir/craft.c.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\malloc_world2.dir\craft.c.obj -c C:\Users\jeffr\Documents\GitHub\malloc_world2\craft.c
 
 CMakeFiles/malloc_world2.dir/craft.c.i: cmake_force
@@ -183,7 +169,6 @@ malloc_world2_OBJECTS = \
 "CMakeFiles/malloc_world2.dir/map.c.obj" \
 "CMakeFiles/malloc_world2.dir/perlin_noise.c.obj" \
 "CMakeFiles/malloc_world2.dir/player.c.obj" \
-"CMakeFiles/malloc_world2.dir/recolt.c.obj" \
 "CMakeFiles/malloc_world2.dir/shift.c.obj" \
 "CMakeFiles/malloc_world2.dir/utils.c.obj" \
 "CMakeFiles/malloc_world2.dir/craft.c.obj"
@@ -195,7 +180,6 @@ malloc_world2.exe: CMakeFiles/malloc_world2.dir/main.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/map.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/perlin_noise.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/player.c.obj
-malloc_world2.exe: CMakeFiles/malloc_world2.dir/recolt.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/shift.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/utils.c.obj
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/craft.c.obj
@@ -203,7 +187,7 @@ malloc_world2.exe: CMakeFiles/malloc_world2.dir/build.make
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/linklibs.rsp
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/objects1.rsp
 malloc_world2.exe: CMakeFiles/malloc_world2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable malloc_world2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\jeffr\Documents\GitHub\malloc_world2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable malloc_world2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\malloc_world2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
